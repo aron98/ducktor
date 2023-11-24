@@ -1,6 +1,6 @@
 import Header from "../../Components/Header/Header";
 
-function Home () {
+const Home = () => {
     return (
         <div>
             <Header />
