@@ -4,11 +4,13 @@ import storage from 'redux-persist/lib/storage';
 import footprintReducer from "./FootprintReducer";
 import savingsReducer from './SavingsReducer';
 import newsReducer from './NewsReducer';
+import settingsReducer from "./SettingsReducer";
 
 const rootReducer = combineReducers({
     footprintReducer,
     savingsReducer,
-    newsReducer
+    newsReducer,
+    settingsReducer
 });
 
 const persistConfig = {
