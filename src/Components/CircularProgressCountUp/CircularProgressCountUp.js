@@ -7,7 +7,7 @@ const CircularProgressCountUp = (props) => {
         isCounting: true,
         duration: 1,
         start: 0,
-        end: 75,
+        end: props.percent,
     });
 
     return (
