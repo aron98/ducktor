@@ -1,7 +1,5 @@
 import {AspectRatio, Box, Card, CardContent, CardOverflow, Divider} from "@mui/joy";
 import Typography from "@mui/joy/Typography";
-import {IconButton} from "@mui/material";
-import {BookmarkAdd} from "@mui/icons-material";
 import Link from '@mui/joy/Link';
 
 const News = (props) => {
