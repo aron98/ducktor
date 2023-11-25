@@ -4,8 +4,8 @@ const initialState = {
     footprints: [
         {
             date: '2023-11-25',
-            name: 'Hajszaritas 5 percen keresztul',
-            footprint: 0.5
+            name: 'Repules angliaba',
+            footprint: 8
         }
     ]
 }

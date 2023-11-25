@@ -10,6 +10,7 @@ import {useState} from "react";
 import {ADD_FOOTPRINT, ADD_SAVING, REMOVE_FOOTPRINT, REMOVE_SAVING} from "../../Redux/actions";
 import RemoveIcon from '@mui/icons-material/Remove';
 import SavingModal from "../../Components/SavingModal/SavingModal";
+import LinearProgressBar from "../../Components/LinearProgressBar/LinearProgressBar";
 
 const LogFootprint = (props) => {
     const [footprintModalOpen, setFootprintModal] = useState(false)
@@ -21,6 +22,7 @@ const LogFootprint = (props) => {
     const savingSum = props.todaysSavings.map(saving => saving.saving).reduce((accumulator, currentValue) => {
         return accumulator + currentValue
     },0);
+
     return (
         <Box>
             <Box p={1}>
@@ -48,6 +50,13 @@ const LogFootprint = (props) => {
                                 <Typography level="body-xs">Remaining</Typography>
                             </Grid>
                         </Grid>
+                    </Box>
+                </Paper>
+            </Box>
+            <Box p={1}>
+                <Paper>
+                    <Box p={1}>
+                        <LinearProgressBar value={100 * (footprintSum - savingSum) / limit} />
                     </Box>
                 </Paper>
             </Box>
