@@ -1,7 +1,10 @@
+import LinearProgressBar from "../../Components/LinearProgressBar/LinearProgressBar";
+
+
 const Home = () => {
     return (
         <div>
-            <h1>Some content</h1>
+            <LinearProgressBar title='Carbon usage'/>
         </div>
     )
 }
