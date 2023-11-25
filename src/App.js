@@ -30,9 +30,17 @@ function App() {
                 <Toolbar>
                     <Grid container>
                         <Grid item xs={2}>
-                            <IconButton edge="start" color="inherit" aria-label='flame'>
-                                <WhatshotIcon />
-                            </IconButton>
+                            <Box
+                                display="flex"
+                                justifyContent="center"
+                                alignItems="center"
+                                minHeight="100%"
+                            >
+                                <IconButton edge="start" color="warning" aria-label='flame'>
+                                    <WhatshotIcon color="orange" />
+                                </IconButton>
+                                <Typography variant="title-md" color="orange"><b>25</b></Typography>
+                            </Box>
                         </Grid>
 
                         <Grid item xs={8}>
