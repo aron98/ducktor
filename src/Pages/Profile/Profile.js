@@ -9,7 +9,7 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import avatar from './cap_quack.webp'
 import novBadge from './nov_badge.webp'
 import * as React from "react";
-import MassengerShare from "../../Components/Sharing/MassengerShare";
+import ShareButtons from "../../Components/Sharing/ShareButtons";
 
 const Profile = (props) => {
     const footprintBase = 342.5
@@ -44,7 +44,7 @@ const Profile = (props) => {
                             You are officially 🦆-ing Good
                         </Typography></Grid>
                     </Grid>
-                    <MassengerShare url='https://junction.aronerdelyi.hu/'/>
+                    <ShareButtons url='https://junction.aronerdelyi.hu/' size='32' title='Random'/>
                 </Card>
             </Box>
             <Box p={1}>
