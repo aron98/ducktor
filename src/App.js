@@ -6,6 +6,7 @@ import {BottomNavigation, BottomNavigationAction, IconButton} from "@mui/materia
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import ForumIcon from "@mui/icons-material/Forum";
+import PeopleIcon from "@mui/icons-material/People";
 import * as React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
