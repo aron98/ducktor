@@ -41,7 +41,7 @@ const Dashboard = (props) => {
                                 alignItems="center"
                                 minHeight="100%"
                             >
-                                <CircularProgressCountUp percent={100 * (limit - footprintSum + savingSum) / limit}/>
+                                <CircularProgressCountUp percent={100 * (footprintSum - savingSum) / limit}/>
                             </Box>
                         </Grid>
                         <Grid item xs={4}>

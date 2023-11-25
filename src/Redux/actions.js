@@ -1,0 +1,5 @@
+export const ADD_FOOTPRINT = 'ADD_FOOTPRINT'
+export const REMOVE_FOOTPRINT = 'REMOVE_FOOTPRINT'
+
+export const ADD_SAVING = 'ADD_SAVING'
+export const REMOVE_SAVING = 'REMOVE_SAVING'

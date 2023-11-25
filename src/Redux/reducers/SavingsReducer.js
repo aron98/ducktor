@@ -1,5 +1,7 @@
 // milyen akciot csinalt az ember amivel csokkenti a labnyomat (lehet tobb is)
 
+import {ADD_SAVING, REMOVE_SAVING} from "../actions";
+
 const initialState = {
     savings: [
         {
@@ -14,11 +16,20 @@ const initialState = {
 
 function savingsReducer(state = initialState, action) {
     switch (action.type) {
-        case 'ADD_SAVING':
+        case ADD_SAVING:
+            const newSaving = {
+                ...action.data,
+                date: (new Date()).toDateString()
+            }
             return {
-                savings: [...state.savings, action.data]
+                savings: [...state.savings, newSaving]
             };
-
+        case REMOVE_SAVING:
+            let newState = [...state.savings]
+            newState.splice(action.data, 1)
+            return {
+                savings: newState
+            }
         default:
             return state;
     }

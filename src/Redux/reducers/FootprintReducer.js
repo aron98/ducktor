@@ -1,3 +1,5 @@
+import {ADD_FOOTPRINT, REMOVE_FOOTPRINT} from "../actions";
+
 const initialState = {
     footprints: [
         {
@@ -10,9 +12,19 @@ const initialState = {
 
 function footprintReducer(state = initialState, action) {
     switch (action.type) {
-        case 'ADD_FOOTPRINT':
+        case ADD_FOOTPRINT:
+            const newFootprint = {
+                ...action.data,
+                date: (new Date()).toDateString()
+            }
             return {
-                footprints: [...state.footprints, action.data]
+                footprints: [...state.footprints, newFootprint]
+            }
+        case REMOVE_FOOTPRINT:
+            let newState = [...state.footprints]
+            newState.splice(action.data, 1)
+            return {
+                footprints: newState
             }
         default:
             return state;
