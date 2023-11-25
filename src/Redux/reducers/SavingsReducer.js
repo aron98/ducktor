@@ -6,8 +6,8 @@ const initialState = {
     savings: [
         {
             date: '2023-11-25',
-            name: 'fa ültetés',
-            saving: 4 // hany kilo co2-t kot le
+            name: 'Hozza jarulas fa ültetéshez',
+            saving: 0.5 // hany kilo co2-t kot le
 
 
         }
