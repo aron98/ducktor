@@ -12,7 +12,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import Typography from "@mui/material/Typography";
-import PeopleIcon from "@mui/icons-material/People";
 import AppBar from "@mui/material/AppBar";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Feed from './Pages/Feed/Feed'; 
