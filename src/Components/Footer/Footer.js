@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import SettingsIcon from '@mui/icons-material/Settings';
 import './Footer.css'
+import {Link} from "react-router-dom";
 
 export default function Footer() {
   const [value, setValue] = React.useState(0);
@@ -23,9 +24,9 @@ export default function Footer() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab icon={<SettingsIcon />} aria-label="phone" />
-          <Tab icon={<SettingsIcon />} aria-label="phone" />
-          <Tab icon={<SettingsIcon />} aria-label="phone" />
+          <Tab icon={<SettingsIcon />} component={Link} to="/" aria-label="phone" />
+          <Tab icon={<SettingsIcon />} component={Link} to="/statistics" aria-label="phone" />
+          <Tab icon={<SettingsIcon />} component={Link} to="/leaderboard" aria-label="phone" />
         </Tabs>
       </AppBar>
   );
