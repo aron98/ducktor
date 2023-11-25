@@ -23,8 +23,8 @@ const SavingModal = (props) => {
     return (
         <Modal open={props.open} onClose={() => close()}>
             <ModalDialog>
-                <DialogTitle>Create new project</DialogTitle>
-                <DialogContent>Fill in the information of the project.</DialogContent>
+                <DialogTitle>Add new carbon footprint reduction</DialogTitle>
+                <DialogContent>Fill in the information.</DialogContent>
                 <form
                     onSubmit={(event) => {
                         event.preventDefault();
@@ -34,7 +34,7 @@ const SavingModal = (props) => {
                 >
                     <Stack spacing={2}>
                         <FormControl>
-                            <FormLabel>Name</FormLabel>
+                            <FormLabel>Activity</FormLabel>
                             <Input autoFocus required value={state.name} onChange={event => setState({...state, name: event.target.value})}/>
                         </FormControl>
                         <FormControl>
