@@ -1,128 +1,50 @@
 import {AspectRatio, Box, Card, CardContent, CardOverflow, Divider} from "@mui/joy";
 import Typography from "@mui/joy/Typography";
 import Link from '@mui/joy/Link';
+import {connect} from "react-redux";
 
 const News = (props) => {
+
     return (
         <Box>
-            <Box p={1}>
-                <Card variant="soft">
-                    <CardOverflow>
-                        <AspectRatio ratio="2">
-                            <img
-                                src="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318"
-                                srcSet="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318&dpr=2 2x"
-                                loading="lazy"
-                                alt=""
-                            />
-                        </AspectRatio>
-                    </CardOverflow>
-                    <CardContent>
-                        <Typography level="title-md">
-                            <Link overlay underline="none">
-                                Yosemite National Park
-                            </Link>
-                        </Typography>
-                    </CardContent>
-                    <CardOverflow variant="soft">
-                        <Divider inset="context" />
-                        <CardContent orientation="horizontal">
-                            <Typography level="body-xs">6.3k views</Typography>
-                            <Divider orientation="vertical" />
-                            <Typography level="body-xs">1 hour ago</Typography>
+            {props.news.map((newsItem, index) => (
+                <Box p={1} key={index}>
+                    <Card variant="soft">
+                        <CardOverflow>
+                            <AspectRatio ratio="2">
+                                <img
+                                    src={newsItem.image}
+                                    alt=""
+                                />
+                            </AspectRatio>
+                        </CardOverflow>
+                        <CardContent>
+                            <Typography level="title-md">
+                                <Link overlay underline="none">
+                                    {newsItem.name}
+                                </Link>
+                            </Typography>
                         </CardContent>
-                    </CardOverflow>
-                </Card>
-            </Box>
-            <Box p={1}>
-                <Card variant="soft">
-                    <CardOverflow>
-                        <AspectRatio ratio="2">
-                            <img
-                                src="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318"
-                                srcSet="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318&dpr=2 2x"
-                                loading="lazy"
-                                alt=""
-                            />
-                        </AspectRatio>
-                    </CardOverflow>
-                    <CardContent>
-                        <Typography level="title-md">
-                            <Link overlay underline="none">
-                                Yosemite National Park
-                            </Link>
-                        </Typography>
-                    </CardContent>
-                    <CardOverflow variant="soft">
-                        <Divider inset="context" />
-                        <CardContent orientation="horizontal">
-                            <Typography level="body-xs">6.3k views</Typography>
-                            <Divider orientation="vertical" />
-                            <Typography level="body-xs">1 hour ago</Typography>
-                        </CardContent>
-                    </CardOverflow>
-                </Card>
-            </Box>
-            <Box p={1}>
-                <Card variant="soft">
-                    <CardOverflow>
-                        <AspectRatio ratio="2">
-                            <img
-                                src="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318"
-                                srcSet="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318&dpr=2 2x"
-                                loading="lazy"
-                                alt=""
-                            />
-                        </AspectRatio>
-                    </CardOverflow>
-                    <CardContent>
-                        <Typography level="title-md">
-                            <Link overlay underline="none">
-                                Yosemite National Park
-                            </Link>
-                        </Typography>
-                    </CardContent>
-                    <CardOverflow variant="soft">
-                        <Divider inset="context" />
-                        <CardContent orientation="horizontal">
-                            <Typography level="body-xs">6.3k views</Typography>
-                            <Divider orientation="vertical" />
-                            <Typography level="body-xs">1 hour ago</Typography>
-                        </CardContent>
-                    </CardOverflow>
-                </Card>
-            </Box>
-            <Box p={1}>
-                <Card variant="soft">
-                    <CardOverflow>
-                        <AspectRatio ratio="2">
-                            <img
-                                src="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318"
-                                srcSet="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318&dpr=2 2x"
-                                loading="lazy"
-                                alt=""
-                            />
-                        </AspectRatio>
-                    </CardOverflow>
-                    <CardContent>
-                        <Typography level="title-md">
-                            <Link overlay underline="none">
-                                Yosemite National Park
-                            </Link>
-                        </Typography>
-                    </CardContent>
-                    <CardOverflow variant="soft">
-                        <Divider inset="context" />
-                        <CardContent orientation="horizontal">
-                            <Typography level="body-xs">6.3k views</Typography>
-                            <Divider orientation="vertical" />
-                            <Typography level="body-xs">1 hour ago</Typography>
-                        </CardContent>
-                    </CardOverflow>
-                </Card>
-            </Box>
+                        <CardOverflow variant="soft">
+                            <Divider inset="context" />
+                            <CardContent orientation="horizontal">
+                                <Typography level="body-xs">{`${newsItem.view_count} views`}</Typography>
+                                <Divider orientation="vertical" />
+                                <Typography level="body-xs">{newsItem.date}</Typography>
+                            </CardContent>
+                        </CardOverflow>
+                    </Card>
+                </Box>
+            ))}
         </Box>
-    )
+    );
+};
+
+
+const mapStateToProps = (state) => {
+    return {
+        news: state.newsReducer.news,
+    }
 }
 
-export default News;
+export default connect(mapStateToProps)(News);

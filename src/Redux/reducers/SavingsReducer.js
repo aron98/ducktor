@@ -16,7 +16,7 @@ function savingsReducer(state = initialState, action) {
     switch (action.type) {
         case 'ADD_SAVING':
             return {
-                saving_actions: [...state.savings, action.data]
+                savings: [...state.savings, action.data]
             };
 
         default:
