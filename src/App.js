@@ -6,15 +6,15 @@ import {BottomNavigation, BottomNavigationAction, IconButton} from "@mui/materia
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import ForumIcon from "@mui/icons-material/Forum";
+import PeopleIcon from "@mui/icons-material/People";
 import * as React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import Typography from "@mui/material/Typography";
-import PeopleIcon from "@mui/icons-material/People";
 import AppBar from "@mui/material/AppBar";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import News from "./Pages/News/News";
+import Feed from './Pages/Feed/Feed'; 
 import SettingsModal from "./Components/SettingsModal/SettingsModal";
 import {useState} from "react";
 import {UPDATE_SETTINGS} from "./Redux/actions";
@@ -68,8 +68,8 @@ function App(props) {
                 <Route path="/log-footprint" element={(
                     <LogFootprint />
                 )} />
-                <Route path="/news" element={(
-                    <News />
+                <Route path="/feed" element={(
+                    <Feed />
                 )} />
                 <Route path="/community" element={(
                     <Typography>Community</Typography>
@@ -86,7 +86,7 @@ function App(props) {
             >
                 <BottomNavigationAction label="Dashboard" icon={<DashboardIcon />} component={Link} to="/" />
                 <BottomNavigationAction label="Diary" icon={<LocalLibraryIcon />} component={Link} to="/log-footprint" />
-                <BottomNavigationAction label="News" icon={<ForumIcon />} component={Link} to="/news" />
+                <BottomNavigationAction label="Feed" icon={<ForumIcon />} component={Link} to="/feed" />
                 <BottomNavigationAction label="Community" icon={<PeopleIcon />} component={Link} to="/community" />
             </BottomNavigation>
         </Box>
