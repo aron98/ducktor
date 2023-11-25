@@ -6,12 +6,13 @@ import {BottomNavigation, BottomNavigationAction, IconButton} from "@mui/materia
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import ForumIcon from "@mui/icons-material/Forum";
-import PeopleIcon from "@mui/icons-material/People";
 import * as React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import Typography from "@mui/material/Typography";
+import PeopleIcon from "@mui/icons-material/People";
+import PersonIcon from "@mui/icons-material/Person";
 import AppBar from "@mui/material/AppBar";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Feed from './Pages/Feed/Feed'; 
@@ -19,6 +20,7 @@ import SettingsModal from "./Components/SettingsModal/SettingsModal";
 import {useState} from "react";
 import {UPDATE_SETTINGS} from "./Redux/actions";
 import {connect} from "react-redux";
+import Profile from "./Pages/Profile/Profile";
 
 function App(props) {
     const [settingsModalOpen, setSettingsModal] = useState(false)
@@ -74,6 +76,9 @@ function App(props) {
                 <Route path="/community" element={(
                     <Typography>Community</Typography>
                 )} />
+                <Route path="/profile" element={(
+                    <Profile />
+                )} />
             </Routes>
         </Box>
         <Box>
@@ -83,11 +88,13 @@ function App(props) {
                 onChange={(event, newValue) => {
                     setValue(newValue);
                 }}
+                sx={{ maxWidth: "390px" }}
             >
-                <BottomNavigationAction label="Dashboard" icon={<DashboardIcon />} component={Link} to="/" />
-                <BottomNavigationAction label="Diary" icon={<LocalLibraryIcon />} component={Link} to="/log-footprint" />
-                <BottomNavigationAction label="Feed" icon={<ForumIcon />} component={Link} to="/feed" />
-                <BottomNavigationAction label="Community" icon={<PeopleIcon />} component={Link} to="/community" />
+                <BottomNavigationAction sx={{ minWidth: "70px" }} label="Dashboard" icon={<DashboardIcon />} component={Link} to="/" />
+                <BottomNavigationAction sx={{ minWidth: "70px" }} label="Diary" icon={<LocalLibraryIcon />} component={Link} to="/log-footprint" />
+                <BottomNavigationAction sx={{ minWidth: "70px" }} label="Feed" icon={<ForumIcon />} component={Link} to="/feed" />
+                <BottomNavigationAction sx={{ minWidth: "70px" }} label="Community" icon={<PeopleIcon />} component={Link} to="/community" />
+                <BottomNavigationAction sx={{ minWidth: "70px" }} label="Profile" icon={<PersonIcon />} component={Link} to="/profile" />
             </BottomNavigation>
         </Box>
         <SettingsModal open={settingsModalOpen} close={() => setSettingsModal(false)} submit={(settings) => props.updateSettings(settings)} initialState={props.settings} />
@@ -96,7 +103,8 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => ({
-    settings: state.settingsReducer
+    settings: state.settingsReducer,
+    activeStreak: true
 })
 
 const mapDispatchToProps = (dispatch) => ({
