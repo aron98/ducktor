@@ -5,9 +5,9 @@ import {ADD_SAVING, REMOVE_SAVING} from "../actions";
 const initialState = {
     savings: [
         {
-            date: '2023-11-25',
-            name: 'Hozza jarulas fa ültetéshez',
-            saving: 0.5 // hany kilo co2-t kot le
+            date: (new Date()).toDateString(),
+            name: 'Recycled 10 water bottles',
+            saving: 0.65
 
 
         }

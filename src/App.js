@@ -1,5 +1,5 @@
 import './App.css';
-import LogFootprint from "./Pages/LogFootprint/LogFootprint";
+import LogFootprint from "./Pages/Diary/Diary";
 import {NavLink, Route, Routes} from "react-router-dom";
 import {Box} from "@mui/joy";
 import {BottomNavigation, BottomNavigationAction, IconButton} from "@mui/material";
@@ -21,6 +21,7 @@ import {useState} from "react";
 import {UPDATE_SETTINGS} from "./Redux/actions";
 import {connect} from "react-redux";
 import Profile from "./Pages/Profile/Profile";
+import Community from "./Pages/Community/Community";
 
 function App(props) {
     const pathname = window.location.pathname;
@@ -75,7 +76,7 @@ function App(props) {
                     <Feed />
                 )} />
                 <Route path="/community" element={(
-                    <Typography>Community</Typography>
+                    <Community />
                 )} />
                 <Route path="/profile" element={(
                     <Profile />
@@ -89,7 +90,8 @@ function App(props) {
                 onChange={(event, newValue) => {
                     setValue(newValue);
                 }}
-                sx={{ maxWidth: "390px" }}
+                style={{borderTop: "1px solid #dadada"}}
+                sx={{ maxWidth: "390px", bgcolor: "#eaeaea", minHeight: "100%"}}
             >
                 <BottomNavigationAction sx={{ minWidth: "70px" }} label="Dashboard" icon={<DashboardIcon />} component={NavLink} to="/" value="/" />
                 <BottomNavigationAction sx={{ minWidth: "70px" }} label="Diary" icon={<LocalLibraryIcon />} component={NavLink} to="/diary" value="/diary"  />

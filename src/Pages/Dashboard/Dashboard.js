@@ -19,12 +19,12 @@ const Dashboard = (props) => {
     const footprintData = [12, 6, 10, 4, 7, 8];
     const savingData = [4, 0, 3, 8, 5, 2];
     const xLabels = [
-        '11.18',
-        '11.19',
         '11.20',
+        '11.21',
         '11.22',
         '11.23',
-        '11.24'
+        '11.24',
+        '11.25'
     ];
     return (
         <Box>
@@ -57,7 +57,7 @@ const Dashboard = (props) => {
                                         </Box>
                                     </Grid>
                                     <Grid item xs={8}>
-                                        <Typography variant="caption">Limit<br/><b>{props.limit}kg</b></Typography>
+                                        <Typography variant="caption">Limit<br/><b>{Number(Number(props.limit).toFixed(2))}kg</b></Typography>
                                     </Grid>
                                 </Grid>
                             </Box>
@@ -74,7 +74,7 @@ const Dashboard = (props) => {
                                         </Box>
                                     </Grid>
                                     <Grid item xs={8}>
-                                        <Typography variant="caption">Footprint<br/><b>{footprintSum}kg</b></Typography>
+                                        <Typography variant="caption">Footprint<br/><b>{Number(Number(footprintSum).toFixed(2))}kg</b></Typography>
                                     </Grid>
                                 </Grid>
                             </Box>
@@ -91,7 +91,7 @@ const Dashboard = (props) => {
                                         </Box>
                                     </Grid>
                                     <Grid item xs={8}>
-                                        <Typography variant="caption">Saved<br/><b>{savingSum}kg</b></Typography>
+                                        <Typography variant="caption">Saved<br/><b>{Number(Number(savingSum).toFixed(2))}kg</b></Typography>
                                     </Grid>
                                 </Grid>
                             </Box>

@@ -7,7 +7,7 @@ function VideoFeed(props) {
             <Card variant="soft">
                 <CardOverflow>
                     <AspectRatio ratio="2">
-                        <iframe width="100%" height="100%" src={props.feedsItem.link} title={props.feedsItem.name} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="100%" height="100%" src={props.feedsItem.link} title={props.feedsItem.name} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" ></iframe>
                     </AspectRatio>
                 </CardOverflow>
                 <CardContent>
