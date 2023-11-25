@@ -3,13 +3,13 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import footprintReducer from "./FootprintReducer";
 import savingsReducer from './SavingsReducer';
-import newsReducer from './NewsReducer';
+import feedReducer from './FeedReducer';
 import settingsReducer from "./SettingsReducer";
 
 const rootReducer = combineReducers({
     footprintReducer,
     savingsReducer,
-    newsReducer,
+    feedReducer,
     settingsReducer
 });
 
