@@ -13,10 +13,10 @@ const SavingModal = (props) => {
     }
 
     const setSaving = (value) => {
-        if (value === 0){
+        if (value === ""){
             setState({...state, saving: ""})
         }else{
-            setState({...state, saving: value})
+            setState({...state, saving: Number(value)})
         }
     }
 
@@ -39,12 +39,12 @@ const SavingModal = (props) => {
                         </FormControl>
                         <FormControl>
                             <FormLabel>Carbon-dioxide emission in kg</FormLabel>
-                            <Input required type="number" value={state.saving} onChange={event => setSaving(Number(event.target.value))} />
+                            <Input required type="number" value={state.saving} onChange={event => setSaving(event.target.value)} />
                         </FormControl>
                         <Button type="submit" disabled={
                             !(state.name !== null
                             && state.name.length > 0
-                            && state.saving !== 0
+                            && state.saving !== ""
                             && state.saving > 0)
                         }>Submit</Button>
                     </Stack>

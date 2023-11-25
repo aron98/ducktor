@@ -10,7 +10,6 @@ import {connect} from "react-redux";
 import isToday from "../../Utilities/IsToday";
 
 const Dashboard = (props) => {
-    const limit = 10;
     const footprintSum = props.todaysFootprints.map(footprint => footprint.footprint).reduce((accumulator, currentValue) => {
         return accumulator + currentValue
     }, 0);
@@ -27,7 +26,6 @@ const Dashboard = (props) => {
         '11.23',
         '11.24'
     ];
-    console.log(100 * (footprintSum - savingSum) / limit)
     return (
         <Box>
             <Box p={1}>
@@ -42,7 +40,7 @@ const Dashboard = (props) => {
                                 alignItems="center"
                                 minHeight="100%"
                             >
-                                <CircularProgressCountUp value={Number(100 * (footprintSum - savingSum) / limit)}/>
+                                <CircularProgressCountUp value={Number(100 * (footprintSum - savingSum) / props.limit)}/>
                             </Box>
                         </Grid>
                         <Grid item xs={4}>
@@ -59,7 +57,7 @@ const Dashboard = (props) => {
                                         </Box>
                                     </Grid>
                                     <Grid item xs={8}>
-                                        <Typography variant="caption">Limit<br/><b>{limit}kg</b></Typography>
+                                        <Typography variant="caption">Limit<br/><b>{props.limit}kg</b></Typography>
                                     </Grid>
                                 </Grid>
                             </Box>
@@ -130,7 +128,8 @@ const mapStateToProps = (state) => {
         todaysFootprints: state.footprintReducer.footprints.filter(footprint => isToday(new Date(footprint.date))),
         todaysSavings: state.savingsReducer.savings.filter(saving => isToday(new Date(saving.date))),
         footprints: state.footprintReducer.footprints,
-        savings: state.savingsReducer.savings
+        savings: state.savingsReducer.savings,
+        limit: state.settingsReducer.limit
     }
 }
 

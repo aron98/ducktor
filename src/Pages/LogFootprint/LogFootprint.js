@@ -1,6 +1,6 @@
 import {Box, Card} from "@mui/joy";
 import Typography from "@mui/joy/Typography";
-import {IconButton, Paper} from "@mui/material";
+import {IconButton} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import AddIcon from '@mui/icons-material/Add';
 import {connect} from "react-redux";
@@ -15,7 +15,6 @@ import LinearProgressBar from "../../Components/LinearProgressBar/LinearProgress
 const LogFootprint = (props) => {
     const [footprintModalOpen, setFootprintModal] = useState(false)
     const [savingModalOpen, setSavingModal] = useState(false)
-    const limit = 10;
     const footprintSum = props.todaysFootprints.map(footprint => footprint.footprint).reduce((accumulator, currentValue) => {
         return accumulator + currentValue
     },0);
@@ -30,22 +29,22 @@ const LogFootprint = (props) => {
                     <Typography level="title-md" textAlign="left">Remaining</Typography>
                     <Grid container>
                         <Grid item xs={2}>
-                            <Typography>{limit}kg</Typography>
+                            <Typography>{Number(props.limit.toFixed(2))}kg</Typography>
                             <Typography level="body-xs">Limit</Typography>
                         </Grid>
                         <Grid item xs={1}>-</Grid>
                         <Grid item xs={2}>
-                            <Typography>{footprintSum}kg</Typography>
+                            <Typography>{Number(footprintSum.toFixed(2))}kg</Typography>
                             <Typography level="body-xs">Footprint</Typography>
                         </Grid>
                         <Grid item xs={1}>+</Grid>
                         <Grid item xs={2}>
-                            <Typography>{savingSum}kg</Typography>
+                            <Typography>{Number(savingSum.toFixed(2))}kg</Typography>
                             <Typography level="body-xs">Saved</Typography>
                         </Grid>
                         <Grid item xs={1}>=</Grid>
                         <Grid item xs={3}>
-                            <Typography>{limit-footprintSum+savingSum}kg</Typography>
+                            <Typography>{Number((props.limit-footprintSum+savingSum).toFixed(2))}kg</Typography>
                             <Typography level="body-xs">Remaining</Typography>
                         </Grid>
                     </Grid>
@@ -53,7 +52,7 @@ const LogFootprint = (props) => {
             </Box>
             <Box p={1}>
                 <Card>
-                    <LinearProgressBar value={100 * (footprintSum - savingSum) / limit} />
+                    <LinearProgressBar value={100 * (footprintSum - savingSum) / props.limit} />
                 </Card>
             </Box>
             <Box p={1}>
@@ -205,7 +204,8 @@ const mapStateToProps = (state) => {
         todaysFootprints: state.footprintReducer.footprints.filter(footprint => isToday(new Date(footprint.date))),
         todaysSavings: state.savingsReducer.savings.filter(saving => isToday(new Date(saving.date))),
         footprints: state.footprintReducer.footprints,
-        savings: state.savingsReducer.savings
+        savings: state.savingsReducer.savings,
+        limit: state.settingsReducer.limit
     }
 }
 

@@ -11,7 +11,7 @@ const CircularProgressCountUp = (props) => {
     });
     return (
         <CircularProgress determinate value={Number(value)} sx={{ '--CircularProgress-size': '7em' }}>
-            <Typography><b>{100-value}%</b><br/>remaining</Typography>
+            <Typography><b>{Number(Number(100-value).toFixed(2))}%</b><br/>remaining</Typography>
         </CircularProgress>
     );
 }
