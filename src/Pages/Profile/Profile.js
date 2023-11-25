@@ -1,8 +1,7 @@
-import {Box, Button, Card} from "@mui/joy";
+import {Box, Card} from "@mui/joy";
 import Typography from "@mui/joy/Typography";
 import {connect} from "react-redux";
 import Grid from "@mui/material/Grid";
-import IosShareIcon from '@mui/icons-material/IosShare';
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import IsoIcon from '@mui/icons-material/Iso';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -10,6 +9,7 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import avatar from './cap_quack.webp'
 import novBadge from './nov_badge.webp'
 import * as React from "react";
+import MassengerShare from "../../Components/Sharing/MassengerShare";
 
 const Profile = (props) => {
     const footprintBase = 342.5
@@ -44,7 +44,7 @@ const Profile = (props) => {
                             You are officially 🦆-ing Good
                         </Typography></Grid>
                     </Grid>
-                    <Button startDecorator={<IosShareIcon />} onClick={function(){}} fullWidth>Share</Button>
+                    <MassengerShare url='https://junction.aronerdelyi.hu/'/>
                 </Card>
             </Box>
             <Box p={1}>
