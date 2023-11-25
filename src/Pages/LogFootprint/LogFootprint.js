@@ -1,4 +1,4 @@
-import {Box} from "@mui/joy";
+import {Box, Card} from "@mui/joy";
 import Typography from "@mui/joy/Typography";
 import {IconButton, Paper} from "@mui/material";
 import Grid from "@mui/material/Grid";
@@ -26,7 +26,7 @@ const LogFootprint = (props) => {
     return (
         <Box>
             <Box p={1}>
-                <Paper>
+                <Card>
                     <Box p={1}>
                         <Typography level="title-md" textAlign="left">Remaining</Typography>
                         <Grid container>
@@ -51,10 +51,10 @@ const LogFootprint = (props) => {
                             </Grid>
                         </Grid>
                     </Box>
-                </Paper>
+                </Card>
             </Box>
             <Box p={1}>
-                <Paper>
+                <Card>
                     <Box p={1}>
                         <LinearProgressBar value={100 * (footprintSum - savingSum) / limit} />
                     </Box>
@@ -80,13 +80,13 @@ const LogFootprint = (props) => {
                             </Grid>
                         </Grid>
                         <Box p={1}>
-                            <Paper elevation={0}>
+                            <Box elevation={0}>
                                 {props.footprints.map((footprint, idx) => ({
                                     ...footprint,
                                     idx: idx
                                 })).filter(footprint => isToday(new Date(footprint.date))).map(footprint => {
                                     return (
-                                        <Box p={1} key={footprint.idx}>
+                                        <Box key={footprint.idx}>
                                             <Grid container>
                                                 <Grid item xs={8}>
                                                     <Box
@@ -121,14 +121,14 @@ const LogFootprint = (props) => {
                                         </Box>
                                     )
                                 })}
-                            </Paper>
+                            </Box>
                         </Box>
 
                     </Box>
-                </Paper>
+                </Card>
             </Box>
             <Box p={1}>
-                <Paper>
+                <Card>
                     <Box p={1}>
                         <Grid container>
                             <Grid item xs={10}>
@@ -147,13 +147,13 @@ const LogFootprint = (props) => {
                             </Grid>
                         </Grid>
                         <Box p={1}>
-                            <Paper elevation={0}>
+                            <Box elevation={0}>
                                 {props.savings.map((saving, idx) => ({
                                     ...saving,
                                     idx: idx
                                 })).filter(saving => isToday(new Date(saving.date))).map((saving, idx) => {
                                     return (
-                                        <Box p={1} key={idx}>
+                                        <Box key={idx}>
                                             <Grid container>
                                                 <Grid item xs={8}>
                                                     <Box
@@ -188,10 +188,10 @@ const LogFootprint = (props) => {
                                         </Box>
                                     )
                                 })}
-                            </Paper>
+                            </Box>
                         </Box>
                     </Box>
-                </Paper>
+                </Card>
             </Box>
             <FootprintModal open={footprintModalOpen} close={() => setFootprintModal(false)} submit={(footprint) => props.addFootprint(footprint)} />
             <SavingModal open={savingModalOpen} close={() => setSavingModal(false)} submit={(saving) => props.addSaving(saving)} />
