@@ -3,7 +3,7 @@
 const initialState = {
     savings: [
         {
-            date: '2023-11-25 09:10',
+            date: '2023-11-25',
             name: 'fa ültetés',
             saving: 4 // hany kilo co2-t kot le
 

@@ -4,8 +4,16 @@ import {IconButton, Paper} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import AddIcon from '@mui/icons-material/Add';
 import {connect} from "react-redux";
+import isToday from "../../Utilities/IsToday";
 
 const LogFootprint = (props) => {
+    const limit = 10;
+    const footprintSum = props.todaysFootprints.map(footprint => footprint.footprint).reduce((accumulator, currentValue) => {
+        return accumulator + currentValue
+    },0);
+    const savingSum = props.todaysSavings.map(saving => saving.saving).reduce((accumulator, currentValue) => {
+        return accumulator + currentValue
+    },0);
     return (
         <Box>
             <Box p={1}>
@@ -14,22 +22,22 @@ const LogFootprint = (props) => {
                         <Typography level="title-md" textAlign="left">Remaining</Typography>
                         <Grid container>
                             <Grid item xs={2}>
-                                <Typography>10kg</Typography>
+                                <Typography>{limit}kg</Typography>
                                 <Typography level="body-xs">Limit</Typography>
                             </Grid>
                             <Grid item xs={1}>-</Grid>
                             <Grid item xs={2}>
-                                <Typography>8kg</Typography>
+                                <Typography>{footprintSum}kg</Typography>
                                 <Typography level="body-xs">Footprint</Typography>
                             </Grid>
                             <Grid item xs={1}>+</Grid>
                             <Grid item xs={2}>
-                                <Typography>0.5kg</Typography>
+                                <Typography>{savingSum}kg</Typography>
                                 <Typography level="body-xs">Saved</Typography>
                             </Grid>
                             <Grid item xs={1}>=</Grid>
                             <Grid item xs={3}>
-                                <Typography>2.5kg</Typography>
+                                <Typography>{limit-footprintSum+savingSum}kg</Typography>
                                 <Typography level="body-xs">Remaining</Typography>
                             </Grid>
                         </Grid>
@@ -57,9 +65,9 @@ const LogFootprint = (props) => {
                         </Grid>
                         <Box p={1}>
                             <Paper elevation={0}>
-                                {props.footprints.map(footprint => {
+                                {props.todaysFootprints.map( (footprint, idx) => {
                                     return (
-                                        <Box p={1}>
+                                        <Box p={1} key={idx}>
                                             <Grid container>
                                                 <Grid item xs={10}><Typography level="title-xs" textAlign="left">{footprint.name}</Typography></Grid>
                                                 <Grid item xs={2}><Typography level="body-xs" textAlign="left">{footprint.footprint}kg</Typography></Grid>
@@ -94,9 +102,9 @@ const LogFootprint = (props) => {
                         </Grid>
                         <Box p={1}>
                             <Paper elevation={0}>
-                                {props.savings.map(saving => {
+                                {props.todaysSavings.map((saving, idx) => {
                                     return (
-                                        <Box p={1}>
+                                        <Box p={1} key={idx}>
                                             <Grid container>
                                                 <Grid item xs={10}><Typography level="title-xs" textAlign="left">{saving.name}</Typography></Grid>
                                                 <Grid item xs={2}><Typography level="body-xs" textAlign="left">{saving.saving}kg</Typography></Grid>
@@ -115,6 +123,8 @@ const LogFootprint = (props) => {
 
 const mapStateToProps = (state) => {
     return {
+        todaysFootprints: state.footprintReducer.footprints.filter(footprint => isToday(new Date(footprint.date))),
+        todaysSavings: state.savingsReducer.savings.filter(saving => isToday(new Date(saving.date))),
         footprints: state.footprintReducer.footprints,
         savings: state.savingsReducer.savings
     }

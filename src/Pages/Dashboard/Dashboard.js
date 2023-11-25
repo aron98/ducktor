@@ -6,8 +6,17 @@ import Co2Icon from '@mui/icons-material/Co2';
 import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import FactoryIcon from '@mui/icons-material/Factory';
 import {LineChart} from "@mui/x-charts";
+import {connect} from "react-redux";
+import isToday from "../../Utilities/IsToday";
 
 const Dashboard = (props) => {
+    const limit = 10;
+    const footprintSum = props.todaysFootprints.map(footprint => footprint.footprint).reduce((accumulator, currentValue) => {
+        return accumulator + currentValue
+    }, 0);
+    const savingSum = props.todaysSavings.map(saving => saving.saving).reduce((accumulator, currentValue) => {
+        return accumulator + currentValue
+    }, 0);
     const footprintData = [12, 6, 10, 4, 7, 8];
     const savingData = [4, 0, 3, 8, 5, 2];
     const xLabels = [
@@ -32,7 +41,7 @@ const Dashboard = (props) => {
                                 alignItems="center"
                                 minHeight="100%"
                             >
-                                <CircularProgressCountUp />
+                                <CircularProgressCountUp percent={100 * (limit - footprintSum + savingSum) / limit}/>
                             </Box>
                         </Grid>
                         <Grid item xs={4}>
@@ -40,16 +49,16 @@ const Dashboard = (props) => {
                                 <Grid container justifyContent="center">
                                     <Grid item xs={4}>
                                         <Box
-                                        display="flex"
-                                        justifyContent="center"
-                                        alignItems="center"
-                                        minHeight="100%"
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            minHeight="100%"
                                         >
-                                            <Co2Icon />
+                                            <Co2Icon/>
                                         </Box>
                                     </Grid>
                                     <Grid item xs={8}>
-                                        <Typography variant="caption">Limit<br/><b>10kg</b></Typography>
+                                        <Typography variant="caption">Limit<br/><b>{limit}kg</b></Typography>
                                     </Grid>
                                 </Grid>
                             </Box>
@@ -62,11 +71,11 @@ const Dashboard = (props) => {
                                             alignItems="center"
                                             minHeight="100%"
                                         >
-                                            <FactoryIcon />
+                                            <FactoryIcon/>
                                         </Box>
                                     </Grid>
                                     <Grid item xs={8}>
-                                        <Typography variant="caption">Footprint<br/><b>8kg</b></Typography>
+                                        <Typography variant="caption">Footprint<br/><b>{footprintSum}kg</b></Typography>
                                     </Grid>
                                 </Grid>
                             </Box>
@@ -79,11 +88,11 @@ const Dashboard = (props) => {
                                             alignItems="center"
                                             minHeight="100%"
                                         >
-                                            <EnergySavingsLeafIcon />
+                                            <EnergySavingsLeafIcon/>
                                         </Box>
                                     </Grid>
                                     <Grid item xs={8}>
-                                        <Typography variant="caption">Saved<br/><b>0.5kg</b></Typography>
+                                        <Typography variant="caption">Saved<br/><b>{savingSum}kg</b></Typography>
                                     </Grid>
                                 </Grid>
                             </Box>
@@ -97,11 +106,11 @@ const Dashboard = (props) => {
                         width={300}
                         height={300}
                         series={[
-                            { data: footprintData, label: 'Footprint' },
-                            { data: savingData, label: 'Saved' },
-                            { data: footprintData.map( (data, idx) => data-savingData[idx]), label: 'Total' },
+                            {data: footprintData, label: 'Footprint'},
+                            {data: savingData, label: 'Saved'},
+                            {data: footprintData.map((data, idx) => data - savingData[idx]), label: 'Total'},
                         ]}
-                        xAxis={[{ scaleType: 'point', data: xLabels }]}
+                        xAxis={[{scaleType: 'point', data: xLabels}]}
                         margin={{
                             left: 30,
                             right: 30,
@@ -115,4 +124,13 @@ const Dashboard = (props) => {
     )
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+    return {
+        todaysFootprints: state.footprintReducer.footprints.filter(footprint => isToday(new Date(footprint.date))),
+        todaysSavings: state.savingsReducer.savings.filter(saving => isToday(new Date(saving.date))),
+        footprints: state.footprintReducer.footprints,
+        savings: state.savingsReducer.savings
+    }
+}
+
+export default connect(mapStateToProps)(Dashboard);
