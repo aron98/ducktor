@@ -12,14 +12,14 @@ const initialState = {
         },
         {
             type: 'news',
-            link: 'https://youtu.be/Soa3gO7tL-c?si=pfdCGr9c5YPQbjKU',
+            link: 'https://youtu.be/QNv9PRDIhes?si=GOhFEbHlg5y0PM80',
             date: '2023-09-12',
             name: 'Apple introduces huge steps towards becoming carbon neutral',
-            image: "https://i.ytimg.com/vi/GYkq9Rgoj8E/sddefault.jpg?v=64762908",
+            image: "https://logowik.com/content/uploads/images/apple-carbon-neutral3283.logowik.com.webp",
             view_count: '1.2b' 
         },
         {
-            type: 'news',
+            type: 'ad',
             link: 'https://youtu.be/Soa3gO7tL-c?si=pfdCGr9c5YPQbjKU',
             image: 'https://www.twincities.com/wp-content/uploads/2015/11/20120213__120217wl-GreenDay.jpg?w=525',
             name: 'We are hiring\n@GreenDay, #ForAGreenrPlanet',
