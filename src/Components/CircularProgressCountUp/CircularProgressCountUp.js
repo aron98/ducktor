@@ -5,11 +5,10 @@ import Typography from "@mui/joy/Typography";
 const CircularProgressCountUp = (props) => {
     const { value } = useCountUp({
         isCounting: true,
-        duration: 1,
+        duration: 2,
         start: 0,
-        end: props.percent,
+        end: Math.min(Math.max(Number(props.value),0), 100),
     });
-
     return (
         <CircularProgress determinate value={Number(value)} sx={{ '--CircularProgress-size': '7em' }}>
             <Typography><b>{100-value}%</b><br/>remaining</Typography>
