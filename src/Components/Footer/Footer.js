@@ -24,9 +24,9 @@ export default function Footer() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab icon={<SettingsIcon />} component={Link} to="/" aria-label="phone" />
-          <Tab icon={<SettingsIcon />} component={Link} to="/statistics" aria-label="phone" />
-          <Tab icon={<SettingsIcon />} component={Link} to="/leaderboard" aria-label="phone" />
+          <Tab icon={<SettingsIcon />} component={Link} to="/" aria-label="tab icon" />
+          <Tab icon={<SettingsIcon />} component={Link} to="/statistics" aria-label="tab icon" />
+          <Tab icon={<SettingsIcon />} component={Link} to="/leaderboard" aria-label="tab icon" />
         </Tabs>
       </AppBar>
   );
