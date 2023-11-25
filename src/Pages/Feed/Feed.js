@@ -7,13 +7,13 @@ const Feed = (props) => {
 
     return (
         <Box>
-            {props.news.map((newsItem, index) => 
+            {props.feeds.map((feedsItem, index) => 
                 <Box key={index}>
                     {
-                        newsItem.type === "news" ? (
-                            <NewsFeed index={index} newsItem={newsItem} />
+                        feedsItem.type === "news" ? (
+                            <NewsFeed index={index} feedsItem={feedsItem} />
                         ) : (
-                            <VideoFeed index={index} newsItem={newsItem} />
+                            <VideoFeed index={index} feedsItem={feedsItem} />
                         )
                     }
                 </Box>
@@ -25,7 +25,7 @@ const Feed = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        news: state.newsReducer.news,
+        feeds: state.feedReducer.feeds,
     }
 }
 

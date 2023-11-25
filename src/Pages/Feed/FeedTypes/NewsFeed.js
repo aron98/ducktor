@@ -9,24 +9,24 @@ function NewsFeed(props) {
                 <CardOverflow>
                     <AspectRatio ratio="2">
                         <img
-                            src={props.newsItem.image}
+                            src={props.feedsItem.image}
                             alt=""
                         />
                     </AspectRatio>
                 </CardOverflow>
                 <CardContent>
                     <Typography level="title-md">
-                        <Link href={props.newsItem.link} target='_blank' overlay underline="none">
-                            {props.newsItem.name}
+                        <Link href={props.feedsItem.link} target='_blank' overlay underline="none">
+                            {props.feedsItem.name}
                         </Link>
                     </Typography>
                 </CardContent>
                 <CardOverflow variant="soft">
                     <Divider inset="context" />
                     <CardContent orientation="horizontal">
-                        <Typography level="body-xs">{`${props.newsItem.view_count} views`}</Typography>
+                        <Typography level="body-xs">{`${props.feedsItem.view_count} views`}</Typography>
                         <Divider orientation="vertical" />
-                        <Typography level="body-xs">{props.newsItem.date}</Typography>
+                        <Typography level="body-xs">{props.feedsItem.date}</Typography>
                     </CardContent>
                 </CardOverflow>
             </Card>
