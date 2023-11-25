@@ -11,12 +11,17 @@ import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import Typography from "@mui/material/Typography";
-import SettingsIcon from "@mui/icons-material/Settings";
+import PeopleIcon from "@mui/icons-material/People";
 import AppBar from "@mui/material/AppBar";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import News from "./Pages/News/News";
+import SettingsModal from "./Components/SettingsModal/SettingsModal";
+import {useState} from "react";
+import {UPDATE_SETTINGS} from "./Redux/actions";
+import {connect} from "react-redux";
 
-function App() {
+function App(props) {
+    const [settingsModalOpen, setSettingsModal] = useState(false)
     const [value, setValue] = React.useState(0);
     const gridContainer = {
         display: "grid",
@@ -43,13 +48,11 @@ function App() {
                             </Box>
                         </Grid>
 
-                        <Grid item xs={8}>
-                            <Typography variant="h4">🏭 🦆</Typography>
-                        </Grid>
+                        <Grid item xs={8} />
 
                         <Grid item xs={2}>
-                            <IconButton edge="start" color="inherit" aria-label='flame'>
-                                <SettingsIcon />
+                            <IconButton edge="start" color="inherit" aria-label='flame' onClick={() => setSettingsModal(true)}>
+                                <Typography variant="h4">🦆</Typography>
                             </IconButton>
                         </Grid>
                     </Grid>
@@ -62,11 +65,14 @@ function App() {
                 <Route path="/" element={(
                     <Dashboard />
                 )} />
-                <Route path="/statistics" element={(
+                <Route path="/log-footprint" element={(
                     <LogFootprint />
                 )} />
-                <Route path="/leaderboard" element={(
+                <Route path="/news" element={(
                     <News />
+                )} />
+                <Route path="/community" element={(
+                    <Typography>Community</Typography>
                 )} />
             </Routes>
         </Box>
@@ -79,12 +85,22 @@ function App() {
                 }}
             >
                 <BottomNavigationAction label="Dashboard" icon={<DashboardIcon />} component={Link} to="/" />
-                <BottomNavigationAction label="Log Footprint" icon={<LocalLibraryIcon />} component={Link} to="/statistics" />
-                <BottomNavigationAction label="News" icon={<ForumIcon />} component={Link} to="/leaderboard" />
+                <BottomNavigationAction label="Diary" icon={<LocalLibraryIcon />} component={Link} to="/log-footprint" />
+                <BottomNavigationAction label="News" icon={<ForumIcon />} component={Link} to="/news" />
+                <BottomNavigationAction label="Community" icon={<PeopleIcon />} component={Link} to="/community" />
             </BottomNavigation>
         </Box>
+        <SettingsModal open={settingsModalOpen} close={() => setSettingsModal(false)} submit={(settings) => props.updateSettings(settings)} initialState={props.settings} />
     </Box>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+    settings: state.settingsReducer
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    updateSettings: (settings) => dispatch({type: UPDATE_SETTINGS, data: settings})
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

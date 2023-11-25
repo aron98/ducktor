@@ -1,30 +1,26 @@
 import {Button, DialogContent, DialogTitle, FormControl, FormLabel, Input, Modal, ModalDialog, Stack} from "@mui/joy";
 import {useState} from "react";
+import Link from "@mui/joy/Link";
 
-const FootprintModal = (props) => {
-    const initialState = {
-        name: "",
-        footprint: ""
-    }
-    const [state, setState] = useState(initialState)
+const SettingsModal = (props) => {
+    const [state, setState] = useState(props.initialState)
     const close = () => {
         props.close()
-        setState(initialState)
     }
 
-    const setFootprint = (value) => {
+    const setLimit = (value) => {
         if (value === ""){
-            setState({...state, footprint: ""})
+            setState({...state, limit: ""})
         }else{
-            setState({...state, footprint: Number(value)})
+            setState({...state, limit: Number(value)})
         }
     }
 
     return (
         <Modal open={props.open} onClose={() => close()}>
             <ModalDialog>
-                <DialogTitle>Add new footprint</DialogTitle>
-                <DialogContent>Fill in the information of the footprint.</DialogContent>
+                <DialogTitle>Change your 🦆-ing settings</DialogTitle>
+                <DialogContent>Fill in the information.</DialogContent>
                 <form
                     onSubmit={(event) => {
                         event.preventDefault();
@@ -34,18 +30,18 @@ const FootprintModal = (props) => {
                 >
                     <Stack spacing={2}>
                         <FormControl>
-                            <FormLabel>Activity</FormLabel>
+                            <FormLabel>Your duck name (<Link href="https://nerdburglars.net/namegenerator/duck-name-generator/" target="_blank">Duck Name Generator</Link>)</FormLabel>
                             <Input autoFocus required value={state.name} onChange={event => setState({...state, name: event.target.value})}/>
                         </FormControl>
                         <FormControl>
                             <FormLabel>Carbon-dioxide emission in kg</FormLabel>
-                            <Input required type="number" value={state.footprint} onChange={event => setFootprint(event.target.value)} />
+                            <Input required type="number" value={state.limit} onChange={event => setLimit(event.target.value)} />
                         </FormControl>
                         <Button type="submit" disabled={
                             !(state.name !== null
-                            && state.name.length > 0
-                            && state.footprint !== ""
-                            && state.footprint > 0)
+                                && state.name.length > 0
+                                && state.limit !== ""
+                                && state.limit > 0)
                         }>Submit</Button>
                     </Stack>
                 </form>
@@ -54,4 +50,4 @@ const FootprintModal = (props) => {
     );
 }
 
-export default FootprintModal;
+export default SettingsModal;
