@@ -1,4 +1,4 @@
-import {Box} from "@mui/joy";
+import {Box, Card} from "@mui/joy";
 import Typography from "@mui/joy/Typography";
 import {IconButton, Paper} from "@mui/material";
 import Grid from "@mui/material/Grid";
@@ -26,172 +26,173 @@ const LogFootprint = (props) => {
     return (
         <Box>
             <Box p={1}>
-                <Paper>
-                    <Box p={1}>
-                        <Typography level="title-md" textAlign="left">Remaining</Typography>
-                        <Grid container>
-                            <Grid item xs={2}>
-                                <Typography>{limit}kg</Typography>
-                                <Typography level="body-xs">Limit</Typography>
-                            </Grid>
-                            <Grid item xs={1}>-</Grid>
-                            <Grid item xs={2}>
-                                <Typography>{footprintSum}kg</Typography>
-                                <Typography level="body-xs">Footprint</Typography>
-                            </Grid>
-                            <Grid item xs={1}>+</Grid>
-                            <Grid item xs={2}>
-                                <Typography>{savingSum}kg</Typography>
-                                <Typography level="body-xs">Saved</Typography>
-                            </Grid>
-                            <Grid item xs={1}>=</Grid>
-                            <Grid item xs={3}>
-                                <Typography>{limit-footprintSum+savingSum}kg</Typography>
-                                <Typography level="body-xs">Remaining</Typography>
-                            </Grid>
+                <Card>
+                    <Typography level="title-md" textAlign="left">Remaining</Typography>
+                    <Grid container>
+                        <Grid item xs={2}>
+                            <Typography>{limit}kg</Typography>
+                            <Typography level="body-xs">Limit</Typography>
                         </Grid>
-                    </Box>
-                </Paper>
+                        <Grid item xs={1}>-</Grid>
+                        <Grid item xs={2}>
+                            <Typography>{footprintSum}kg</Typography>
+                            <Typography level="body-xs">Footprint</Typography>
+                        </Grid>
+                        <Grid item xs={1}>+</Grid>
+                        <Grid item xs={2}>
+                            <Typography>{savingSum}kg</Typography>
+                            <Typography level="body-xs">Saved</Typography>
+                        </Grid>
+                        <Grid item xs={1}>=</Grid>
+                        <Grid item xs={3}>
+                            <Typography>{limit-footprintSum+savingSum}kg</Typography>
+                            <Typography level="body-xs">Remaining</Typography>
+                        </Grid>
+                    </Grid>
+                </Card>
             </Box>
             <Box p={1}>
-                <Paper>
-                    <Box p={1}>
-                        <LinearProgressBar value={100 * (footprintSum - savingSum) / limit} />
-                    </Box>
-                </Paper>
+                <Card>
+                    <LinearProgressBar value={100 * (footprintSum - savingSum) / limit} />
+                </Card>
             </Box>
             <Box p={1}>
-                <Paper>
-                    <Box p={1}>
-                        <Grid container>
-                            <Grid item xs={10}>
-                                <Box
-                                    display="flex"
-                                    alignItems="center"
-                                    minHeight="100%"
-                                >
-                                    <Typography level="title-md" textAlign="left">Footprint</Typography>
-                                </Box>
-                            </Grid>
-                            <Grid item xs={2}>
+                <Card>
+                    <Grid container>
+                        <Grid item xs={10}>
+                            <Box
+                                display="flex"
+                                alignItems="center"
+                                minHeight="100%"
+                            >
+                                <Typography level="title-md" textAlign="left">Footprint</Typography>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Box
+                                display="flex"
+                                alignItems="center"
+                                minHeight="100%"
+                            >
                                 <IconButton aria-label="add" onClick={() => setFootprintModal(true)}>
                                     <AddIcon />
                                 </IconButton>
-                            </Grid>
+                            </Box>
                         </Grid>
-                        <Box p={1}>
-                            <Paper elevation={0}>
-                                {props.footprints.map((footprint, idx) => ({
-                                    ...footprint,
-                                    idx: idx
-                                })).filter(footprint => isToday(new Date(footprint.date))).map(footprint => {
-                                    return (
-                                        <Box p={1} key={footprint.idx}>
-                                            <Grid container>
-                                                <Grid item xs={8}>
-                                                    <Box
-                                                        display="flex"
-                                                        alignItems="center"
-                                                        minHeight="100%"
-                                                    >
-                                                        <Typography level="title-xs" textAlign="left">{footprint.name}</Typography>
-                                                    </Box>
-                                                </Grid>
-                                                <Grid item xs={2}>
-                                                    <Box
-                                                        display="flex"
-                                                        alignItems="center"
-                                                        minHeight="100%"
-                                                    >
-                                                        <Typography level="body-xs" textAlign="left">{footprint.footprint}kg</Typography>
-                                                    </Box>
-                                                </Grid>
-                                                <Grid item xs={2}>
-                                                    <Box
-                                                        display="flex"
-                                                        alignItems="center"
-                                                        minHeight="100%"
-                                                    >
-                                                        <IconButton variant="plain" onClick={() => props.removeFootprint(footprint.idx)}>
-                                                            <RemoveIcon />
-                                                        </IconButton>
-                                                    </Box>
-                                                </Grid>
-                                            </Grid>
-                                        </Box>
-                                    )
-                                })}
-                            </Paper>
+                    </Grid>
+                    <Box>
+                        {props.footprints.map((footprint, idx) => ({
+                            ...footprint,
+                            idx: idx
+                        })).filter(footprint => isToday(new Date(footprint.date))).map(footprint => {
+                            return (
+                                <Box key={footprint.idx}>
+                                    <Grid container>
+                                        <Grid item xs={8}>
+                                            <Box
+                                                display="flex"
+                                                alignItems="center"
+                                                minHeight="100%"
+                                            >
+                                                <Typography level="title-xs" textAlign="left">{footprint.name}</Typography>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item xs={2}>
+                                            <Box
+                                                display="flex"
+                                                alignItems="center"
+                                                minHeight="100%"
+                                            >
+                                                <Typography level="body-xs" textAlign="left">{footprint.footprint}kg</Typography>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item xs={2}>
+                                            <Box
+                                                display="flex"
+                                                alignItems="center"
+                                                minHeight="100%"
+                                            >
+                                                <IconButton variant="plain" onClick={() => props.removeFootprint(footprint.idx)}>
+                                                    <RemoveIcon />
+                                                </IconButton>
+                                            </Box>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
+                                )
+                            })}
                         </Box>
-
-                    </Box>
-                </Paper>
+                </Card>
             </Box>
             <Box p={1}>
-                <Paper>
-                    <Box p={1}>
-                        <Grid container>
-                            <Grid item xs={10}>
-                                <Box
-                                    display="flex"
-                                    alignItems="center"
-                                    minHeight="100%"
-                                >
-                                    <Typography level="title-md" textAlign="left">Saving the planet</Typography>
-                                </Box>
-                            </Grid>
-                            <Grid item xs={2}>
+                <Card>
+                    <Grid container>
+                        <Grid item xs={10}>
+                            <Box
+                                display="flex"
+                                alignItems="center"
+                                minHeight="100%"
+                            >
+                                <Typography level="title-md" textAlign="left">Saving the planet</Typography>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Box
+                                display="flex"
+                                alignItems="center"
+                                minHeight="100%"
+                            >
                                 <IconButton aria-label="add" onClick={() => setSavingModal(true)}>
                                     <AddIcon />
                                 </IconButton>
-                            </Grid>
+                            </Box>
                         </Grid>
-                        <Box p={1}>
-                            <Paper elevation={0}>
-                                {props.savings.map((saving, idx) => ({
-                                    ...saving,
-                                    idx: idx
-                                })).filter(saving => isToday(new Date(saving.date))).map((saving, idx) => {
-                                    return (
-                                        <Box p={1} key={idx}>
-                                            <Grid container>
-                                                <Grid item xs={8}>
-                                                    <Box
-                                                        display="flex"
-                                                        alignItems="center"
-                                                        minHeight="100%"
-                                                    >
-                                                        <Typography level="title-xs" textAlign="left">{saving.name}</Typography>
-                                                    </Box>
-                                                </Grid>
-                                                <Grid item xs={2}>
-                                                    <Box
-                                                        display="flex"
-                                                        alignItems="center"
-                                                        minHeight="100%"
-                                                    >
-                                                        <Typography level="body-xs" textAlign="left">{saving.saving}kg</Typography>
-                                                    </Box>
-                                                </Grid>
-                                                <Grid item xs={2}>
-                                                    <Box
-                                                        display="flex"
-                                                        alignItems="center"
-                                                        minHeight="100%"
-                                                    >
-                                                        <IconButton variant="plain" onClick={() => props.removeSaving(saving.idx)}>
-                                                            <RemoveIcon />
-                                                        </IconButton>
-                                                    </Box>
-                                                </Grid>
+                    </Grid>
+                    <Box>
+                        <Box elevation={0}>
+                            {props.savings.map((saving, idx) => ({
+                                ...saving,
+                                idx: idx
+                            })).filter(saving => isToday(new Date(saving.date))).map((saving, idx) => {
+                                return (
+                                    <Box key={idx}>
+                                        <Grid container>
+                                            <Grid item xs={8}>
+                                                <Box
+                                                    display="flex"
+                                                    alignItems="center"
+                                                    minHeight="100%"
+                                                >
+                                                    <Typography level="title-xs" textAlign="left">{saving.name}</Typography>
+                                                </Box>
                                             </Grid>
-                                        </Box>
-                                    )
-                                })}
-                            </Paper>
+                                            <Grid item xs={2}>
+                                                <Box
+                                                    display="flex"
+                                                    alignItems="center"
+                                                    minHeight="100%"
+                                                >
+                                                    <Typography level="body-xs" textAlign="left">{saving.saving}kg</Typography>
+                                                </Box>
+                                            </Grid>
+                                            <Grid item xs={2}>
+                                                <Box
+                                                    display="flex"
+                                                    alignItems="center"
+                                                    minHeight="100%"
+                                                >
+                                                    <IconButton variant="plain" onClick={() => props.removeSaving(saving.idx)}>
+                                                        <RemoveIcon />
+                                                    </IconButton>
+                                                </Box>
+                                            </Grid>
+                                        </Grid>
+                                    </Box>
+                                )
+                            })}
                         </Box>
                     </Box>
-                </Paper>
+                </Card>
             </Box>
             <FootprintModal open={footprintModalOpen} close={() => setFootprintModal(false)} submit={(footprint) => props.addFootprint(footprint)} />
             <SavingModal open={savingModalOpen} close={() => setSavingModal(false)} submit={(saving) => props.addSaving(saving)} />
