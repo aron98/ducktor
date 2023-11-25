@@ -12,7 +12,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import SavingModal from "../../Components/SavingModal/SavingModal";
 import LinearProgressBar from "../../Components/LinearProgressBar/LinearProgressBar";
 
-const LogFootprint = (props) => {
+const Diary = (props) => {
     const [footprintModalOpen, setFootprintModal] = useState(false)
     const [savingModalOpen, setSavingModal] = useState(false)
     const footprintSum = props.todaysFootprints.map(footprint => footprint.footprint).reduce((accumulator, currentValue) => {
@@ -171,7 +171,7 @@ const LogFootprint = (props) => {
                                                     alignItems="center"
                                                     minHeight="100%"
                                                 >
-                                                    <Typography level="body-xs" textAlign="left">{saving.saving}kg</Typography>
+                                                    <Typography level="body-xs" textAlign="left">-{saving.saving}kg</Typography>
                                                 </Box>
                                             </Grid>
                                             <Grid item xs={2}>
@@ -218,4 +218,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogFootprint);
+export default connect(mapStateToProps, mapDispatchToProps)(Diary);

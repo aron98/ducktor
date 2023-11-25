@@ -2,7 +2,7 @@ import {UPDATE_SETTINGS} from "../actions";
 
 const initialState = {
     name: "Captain Quack",
-    limit: 10
+    limit: 5
 }
 
 function settingsReducer(state = initialState, action) {

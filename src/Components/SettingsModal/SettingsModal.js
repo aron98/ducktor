@@ -34,7 +34,7 @@ const SettingsModal = (props) => {
                             <Input autoFocus required value={state.name} onChange={event => setState({...state, name: event.target.value})}/>
                         </FormControl>
                         <FormControl>
-                            <FormLabel>Carbon-dioxide emission in kg</FormLabel>
+                            <FormLabel>Daily limit of <Link href="https://www.worldometers.info/co2-emissions/co2-emissions-per-capita/" target="_blank">carbon-dioxide emission</Link>per day in kg</FormLabel>
                             <Input required type="number" value={state.limit} onChange={event => setLimit(event.target.value)} />
                         </FormControl>
                         <Button type="submit" disabled={
