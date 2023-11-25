@@ -5,7 +5,7 @@ const initialState = {
         {
             date: '2023-09-12',
             name: 'Apple introduces huge steps towards becoming carbon neutral',
-            image: "https://www.macworld.com/wp-content/uploads/2023/08/apple-wonderlust-event-iphone-15-3.jpg?resize=2048%2C1365&quality=50&strip=all",
+            image: "https://i.ytimg.com/vi/GYkq9Rgoj8E/sddefault.jpg?v=64762908",
             view_count: 2024256128
         },
         {
