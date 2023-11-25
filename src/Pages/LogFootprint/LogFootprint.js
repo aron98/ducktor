@@ -6,16 +6,6 @@ import AddIcon from '@mui/icons-material/Add';
 import {connect} from "react-redux";
 
 const LogFootprint = (props) => {
-    const footprints = [
-        {
-            name: "Travel 3km by bus",
-            footprint: 3
-        },
-        {
-            name: "Using hair dryer for 30 minutes",
-            footprint: 8
-        }
-    ];
     return (
         <Box>
             <Box p={1}>
@@ -67,7 +57,7 @@ const LogFootprint = (props) => {
                         </Grid>
                         <Box p={1}>
                             <Paper elevation={0}>
-                                {footprints.map(footprint => {
+                                {props.footprints.map(footprint => {
                                     return (
                                         <Box p={1}>
                                             <Grid container>
@@ -125,8 +115,8 @@ const LogFootprint = (props) => {
 
 const mapStateToProps = (state) => {
     return {
+        footprints: state.footprintReducer.footprints,
         savings: state.savingsReducer.savings
-        
     }
 }
 
