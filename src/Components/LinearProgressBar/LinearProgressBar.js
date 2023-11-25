@@ -6,14 +6,10 @@ import { useCountUp } from 'use-count-up';
 function LinearProgressBar(props) {
   const { value } = useCountUp({
     isCounting: true,
-    duration: 5,
-    easing: 'linear',
+    duration: 1,
+    easing: 'easeInCubic',
     start: 0,
     end: 75,
-    onComplete: () => ({
-      shouldRepeat: true,
-      delay: 2,
-    }),
   });
 
   return (
@@ -28,13 +24,13 @@ function LinearProgressBar(props) {
         '--LinearProgress-radius': '20px',
         '--LinearProgress-thickness': '24px',
       }}
-      style={{backgroundColor: "#ffffff"}}
+      style={{backgroundColor: "#056608"}}
     >
       <Typography
         level="body-xs"
         fontWeight="xl"
         textColor="common.white"
-        sx={{ mixBlendMode: 'difference' }}
+        sx={{ mixBlendMode: 'hard-light' }}
       >
         {props.title} {`${Math.round(Number(value))}%`}
       </Typography>
