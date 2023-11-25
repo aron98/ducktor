@@ -2,9 +2,10 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import testReducer from "./TestReducer";
+import savingsReducer from './SavingsReducer';
 
 const rootReducer = combineReducers({
-    testReducer
+    savingsReducer
 });
 
 const persistConfig = {

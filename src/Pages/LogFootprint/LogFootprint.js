@@ -3,8 +3,9 @@ import Typography from "@mui/joy/Typography";
 import {IconButton, Paper} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import AddIcon from '@mui/icons-material/Add';
+import {connect} from "react-redux";
 
-const LogFootprint = () => {
+const LogFootprint = (props) => {
     const footprints = [
         {
             name: "Travel 3km by bus",
@@ -13,12 +14,6 @@ const LogFootprint = () => {
         {
             name: "Using hair dryer for 30 minutes",
             footprint: 8
-        }
-    ];
-    const savings = [
-        {
-            name: "Donate to plant 5 trees",
-            footprint: 0.5
         }
     ];
     return (
@@ -109,12 +104,12 @@ const LogFootprint = () => {
                         </Grid>
                         <Box p={1}>
                             <Paper elevation={0}>
-                                {savings.map(saving => {
+                                {props.savings.map(saving => {
                                     return (
                                         <Box p={1}>
                                             <Grid container>
                                                 <Grid item xs={10}><Typography level="title-xs" textAlign="left">{saving.name}</Typography></Grid>
-                                                <Grid item xs={2}><Typography level="body-xs" textAlign="left">{saving.footprint}kg</Typography></Grid>
+                                                <Grid item xs={2}><Typography level="body-xs" textAlign="left">{saving.saving}kg</Typography></Grid>
                                             </Grid>
                                         </Box>
                                     )
@@ -128,4 +123,11 @@ const LogFootprint = () => {
     )
 }
 
-export default LogFootprint;
+const mapStateToProps = (state) => {
+    return {
+        savings: state.savingsReducer.savings
+        
+    }
+}
+
+export default connect(mapStateToProps)(LogFootprint);
