@@ -15,7 +15,7 @@ const initialState = {
             link: 'https://youtu.be/Soa3gO7tL-c?si=pfdCGr9c5YPQbjKU',
             date: '2023-09-12',
             name: 'Apple introduces huge steps towards becoming carbon neutral',
-            image: "https://i.ytimg.com/vi/GYkq9Rgoj8E/sddefault.jpg?v=64762908",
+            image: "/images/apple_logo.png",
             view_count: '1.2b' 
         },
         {

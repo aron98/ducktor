@@ -5,7 +5,7 @@ import Link from '@mui/joy/Link';
 function NewsFeed(props) {
     return (
         <Box p={1} key={props.index}>
-            <Card variant="soft">
+            <Card style={{backgroundColor: '#f0f4f8'}}>
                 <CardOverflow>
                     <AspectRatio ratio="2">
                         <img
