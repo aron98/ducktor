@@ -3,10 +3,15 @@ import {ADD_FOOTPRINT, REMOVE_FOOTPRINT} from "../actions";
 const initialState = {
     footprints: [
         {
-            date: '2023-11-25',
-            name: 'Repules angliaba',
-            footprint: 8
-        }
+            date: (new Date()).toDateString(),
+            name: 'Taking bus to MOME',
+            footprint: 1.92
+        },
+        {
+            date: (new Date()).toDateString(),
+            name: 'Ordering snack from Wolt',
+            footprint: 0.55
+        },
     ]
 }
 

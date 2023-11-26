@@ -1,15 +1,16 @@
-import {Box, Button, Card} from "@mui/joy";
+import {Box, Card, Divider} from "@mui/joy";
 import Typography from "@mui/joy/Typography";
 import {connect} from "react-redux";
 import Grid from "@mui/material/Grid";
-import IosShareIcon from '@mui/icons-material/IosShare';
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import IsoIcon from '@mui/icons-material/Iso';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import avatar from './cap_quack.webp'
 import novBadge from './nov_badge.webp'
+import augustBadge from './augustBadge.png'
 import * as React from "react";
+import ShareButtons from "../../Components/Sharing/ShareButtons";
 
 const Profile = (props) => {
     const footprintBase = 342.5
@@ -44,7 +45,7 @@ const Profile = (props) => {
                             You are officially 🦆-ing Good
                         </Typography></Grid>
                     </Grid>
-                    <Button startDecorator={<IosShareIcon />} onClick={function(){}} fullWidth>Share</Button>
+                    <ShareButtons url='https://junction.aronerdelyi.hu/' size='32' title='Random'/>
                 </Card>
             </Box>
             <Box p={1}>
@@ -140,7 +141,7 @@ const Profile = (props) => {
             </Box>
             <Box p={1}>
                 <Card>
-                    <Typography textAlign="left">Badges</Typography>
+                    <Typography textAlign="left">Earned Badges</Typography>
                     <Grid container>
                         <Grid item xs={3}>
                             <Box
@@ -160,8 +161,36 @@ const Profile = (props) => {
                                 minHeight="100%"
                             >
                                 <Box display="block" p={1}>
-                                    <Typography level="title-lg">November challenge</Typography>
+                                    <Typography level="title-lg">November badge</Typography>
                                     <Typography level="Body-lg">Log your days continuously for at least 15 days</Typography>
+                                </Box>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12}>
+                                <Box p={1}>
+                                    <Divider variant="middle" />
+                                </Box>
+                            </Grid>
+                        <Grid item xs={3}>
+                            <Box
+                                display="flex"
+                                justifyContent="center"
+                                alignItems="center"
+                                minHeight="100%"
+                            >
+                                <img alt="november badge" src={augustBadge} width="100%" style={{borderRadius: 100, border: "2px solid orange"}} />
+                            </Box>
+                        </Grid>
+                        <Grid item xs={9}>
+                            <Box
+                                display="flex"
+                                justifyContent="center"
+                                alignItems="center"
+                                minHeight="100%"
+                            >
+                                <Box display="block" p={1}>
+                                    <Typography level="title-lg">August badge</Typography>
+                                    <Typography level="Body-lg">Meatless Mondays this month. Winner winner no duck dinner!</Typography>
                                 </Box>
                             </Box>
                         </Grid>

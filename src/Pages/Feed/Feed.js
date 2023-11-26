@@ -2,6 +2,7 @@ import {Box} from "@mui/joy";
 import {connect} from "react-redux";
 import NewsFeed from "./FeedTypes/NewsFeed";
 import VideoFeed from "./FeedTypes/VideoFeed";
+import AdFeed from "./FeedTypes/AdFeed";
 
 const Feed = (props) => {
 
@@ -12,9 +13,12 @@ const Feed = (props) => {
                     {
                         feedsItem.type === "news" ? (
                             <NewsFeed index={index} feedsItem={feedsItem} />
-                        ) : (
+                        ) : feedsItem.type === "video" ? (
                             <VideoFeed index={index} feedsItem={feedsItem} />
+                        ) : (
+                            <AdFeed index={index} feedsItem={feedsItem} />
                         )
+
                     }
                 </Box>
             )}
