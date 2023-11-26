@@ -26,7 +26,7 @@ function NewsFeed(props) {
                     <CardContent orientation="horizontal">
                         <Typography level="body-xs">{`${props.feedsItem.view_count} views`}</Typography>
                         <Divider orientation="vertical" />
-                        <Typography level="body-xs">{props.feedsItem.date}</Typography>
+                        <Typography level="body-xs">{(new Date(props.feedsItem.date)).toDateString()}</Typography>
                         <Divider orientation="vertical" />
                         <Typography level="body-xs">{props.feedsItem.spend_time}</Typography>
                     </CardContent>

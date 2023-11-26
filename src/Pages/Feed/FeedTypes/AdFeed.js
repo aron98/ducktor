@@ -24,11 +24,7 @@ function AdFeed(props) {
                 <CardOverflow variant="soft">
                     <Divider inset="context" />
                     <CardContent orientation="horizontal">
-                        <Typography level="body-xs">{`${props.feedsItem.view_count}`}</Typography>
-                        <Divider orientation="vertical" />
-                        <Typography level="body-xs">{props.feedsItem.date}</Typography>
-                        <Divider orientation="vertical" />
-                        <Typography level="body-xs">{props.feedsItem.spend_time}</Typography>
+                        <Typography level="body-xs">sponsored</Typography>
                     </CardContent>
                 </CardOverflow>
             </Card>
