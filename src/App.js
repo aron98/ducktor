@@ -100,10 +100,10 @@ function App(props) {
                                 alignItems="center"
                                 minHeight="100%"
                             >
-                                <IconButton edge="start" color="warning" aria-label='flame' onClick={() => handleStreakCLick()}>
+                                <IconButton style={{border: '3px orange solid'}} variant="outlined" edge="start" color="warning" aria-label='flame' onClick={() => handleStreakCLick()}>
                                     <WhatshotIcon color="orange" />
                                 </IconButton>
-                                <Typography variant="title-md" color="orange"><b>25</b></Typography>
+                                <Typography style={{marginLeft: '5px'}} variant="title-md" color="orange"><b>25</b></Typography>
                             </Box>
                         </Grid>
 
