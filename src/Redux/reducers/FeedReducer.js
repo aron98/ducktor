@@ -36,7 +36,8 @@ const initialState = {
             view_count: '94M',
             date: '2022-06-04',
             spend_time: 'Watching time: 1m'
-        }
+        },
+
     ]
 };
 
