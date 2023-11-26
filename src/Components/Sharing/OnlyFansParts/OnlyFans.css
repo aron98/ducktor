@@ -1,0 +1,26 @@
+/* css file for OF components, such as the share button and icon */
+/*
+.onlyFansLogoContainer {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background-color: #dcd9d9; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+*/
+  .onlyFansLogo {
+    width: 33px; 
+    height: 33px;
+    border-radius: 50%; /* Optional: Apply border-radius for a circular shape */
+  }
+
+  .onlyFansShareButton {
+    background: none;
+    border: none; /* Remove default button border */
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+  }
+    
