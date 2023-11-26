@@ -17,7 +17,7 @@ const Dashboard = (props) => {
         return accumulator + currentValue
     }, 0);
     const footprintData = [12, 6, 10, 4, 7, 8];
-    const savingData = [4, 0, 3, 8, 5, 2];
+    const savingData = [-4, 0, -3, -8, -5, -2];
     const xLabels = [
         '11.20',
         '11.21',
@@ -26,13 +26,17 @@ const Dashboard = (props) => {
         '11.24',
         '11.25'
     ];
+
     return (
         <Box>
+            {/*Today's Footprint*/}
             <Box p={1}>
                 <Card>
                     <Typography variant="h6" align="left">Today's carbon footprint</Typography>
                     <Typography variant="caption" align="left">Remaining = Limit - Spent + Saved</Typography>
                     <Grid container>
+
+                        {/*Circular progressbar*/}
                         <Grid item xs={8}>
                             <Box
                                 display="flex"
@@ -43,6 +47,8 @@ const Dashboard = (props) => {
                                 <CircularProgressCountUp value={Number(100 * (footprintSum - savingSum) / props.limit)}/>
                             </Box>
                         </Grid>
+
+                        {/*Side stats*/}
                         <Grid item xs={4}>
                             <Box p={1}>
                                 <Grid container justifyContent="center">
@@ -99,15 +105,17 @@ const Dashboard = (props) => {
                     </Grid>
                 </Card>
             </Box>
+            
+            {/*Graph plot*/}
             <Box p={1}>
                 <Card>
                     <LineChart
                         width={300}
                         height={300}
                         series={[
-                            {data: footprintData, label: 'Footprint'},
+                            {data: footprintData, label: 'Total'},
                             {data: savingData, label: 'Saved'},
-                            {data: footprintData.map((data, idx) => data - savingData[idx]), label: 'Total'},
+                            {data: footprintData.map((data, idx) => data - savingData[idx]), label: 'Spent'},
                         ]}
                         xAxis={[{scaleType: 'point', data: xLabels}]}
                         margin={{

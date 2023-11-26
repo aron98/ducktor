@@ -6,7 +6,7 @@ import './OnlyFans.css';
 function OnlyFansIcon(){
     return(
         <img 
-            class = 'onlyFansLogo'
+            className='onlyFansLogo'
             src={OnlyFansLogo} alt='OnlyFans'
         />
     )
