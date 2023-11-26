@@ -27,6 +27,8 @@ function NewsFeed(props) {
                         <Typography level="body-xs">{`${props.feedsItem.view_count} views`}</Typography>
                         <Divider orientation="vertical" />
                         <Typography level="body-xs">{props.feedsItem.date}</Typography>
+                        <Divider orientation="vertical" />
+                        <Typography level="body-xs">{props.feedsItem.spend_time}</Typography>
                     </CardContent>
                 </CardOverflow>
             </Card>
