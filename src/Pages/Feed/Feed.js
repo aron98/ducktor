@@ -18,7 +18,6 @@ const Feed = (props) => {
                         ) : (
                             <AdFeed index={index} feedsItem={feedsItem} />
                         )
-
                     }
                 </Box>
             )}
