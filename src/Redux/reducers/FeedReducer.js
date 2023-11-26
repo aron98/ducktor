@@ -15,7 +15,7 @@ const initialState = {
             link: 'https://youtu.be/QNv9PRDIhes?si=GOhFEbHlg5y0PM80',
             date: '2023-09-12',
             name: 'Apple introduces huge steps towards becoming carbon neutral',
-            image: "https://logowik.com/content/uploads/images/apple-carbon-neutral3283.logowik.com.webp",
+            image: "https://photos5.appleinsider.com/archive/gallery/14673-10414-12845-7124-12594-6630-Screenshot-2015-04-20-210835-l-l-xl.jpg",
             view_count: '1.2b' 
         },
         {
@@ -37,7 +37,7 @@ const initialState = {
             type: 'news',
             link: 'https://www.nps.gov/yose/index.htm',
             image: 'https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318',
-            name: 'Yosemite National Park',
+            name: 'Nature\'s Embrace: A Weekend Getaway to Yosemite National Park',
             view_count: '6.3k views',
             date: '2023-11-25',
         },
