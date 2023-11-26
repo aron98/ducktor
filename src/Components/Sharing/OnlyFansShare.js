@@ -1,17 +1,12 @@
-import {Box} from "@mui/joy";
-import OnlyFansLogo from './OnlyFans_Logo_400x400.png'
-import './OnlyFansShare.css'; 
 
+import OnlyFansShareButton from './OnlyFansParts/OnlyFansShareButton'
+import OnlyFansIcon from './OnlyFansParts/OnlyFansIcon';
 
-
-function OnlyFansShare() {
+function OnlyFansShare(props) {
     return (
-        <Box>
-            <img 
-                class = 'onlyFansLogo onlyFansLogoContainer'
-                src={OnlyFansLogo} alt='OnlyFans'
-            />
-        </Box>
+        <OnlyFansShareButton url={props.url}>
+            <OnlyFansIcon size={props.size} round />
+        </OnlyFansShareButton>
     )
 }
 
