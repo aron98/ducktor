@@ -22,6 +22,7 @@ import {UPDATE_SETTINGS} from "./Redux/actions";
 import {connect} from "react-redux";
 import Profile from "./Pages/Profile/Profile";
 import Community from "./Pages/Community/Community";
+import Logo from './logo.png'
 
 function App(props) {
     const pathname = window.location.pathname;
@@ -31,6 +32,21 @@ function App(props) {
         display: "grid",
         gridTemplateRows: "1fr 11fr 1fr"
     };
+
+
+    const buttonStyle = {
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+      };
+    
+      const imageStyle = {
+        maxWidth: '100%',
+        maxHeight: '100%',
+        objectFit: 'cover'
+      };
 
   return (
     <Box className="App" sx={gridContainer}>
@@ -55,8 +71,8 @@ function App(props) {
                         <Grid item xs={8} />
 
                         <Grid item xs={2}>
-                            <IconButton edge="start" color="inherit" aria-label='flame' onClick={() => setSettingsModal(true)}>
-                                <Typography variant="h4">🦆</Typography>
+                            <IconButton style={buttonStyle} edge="start" color="inherit" aria-label='duck_pic' onClick={() => setSettingsModal(true)}>
+                                <img src={Logo} style={imageStyle} alt='duck_pic' />
                             </IconButton>
                         </Grid>
                     </Grid>
