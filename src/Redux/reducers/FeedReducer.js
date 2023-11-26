@@ -24,10 +24,7 @@ const initialState = {
             type: 'ad',
             link: 'https://youtu.be/Soa3gO7tL-c?si=pfdCGr9c5YPQbjKU',
             image: 'https://www.twincities.com/wp-content/uploads/2015/11/20120213__120217wl-GreenDay.jpg?w=525',
-            name: 'We are hiring\n@GreenDay, #ForAGreenrPlanet',
-            view_count: 'sponsored',
-            date: 'Now',
-            spend_time: 'Watching time: 5m'
+            name: 'We are hiring\n@GreenDay, #ForAGreenrPlanet'
         },   
         {
             type: 'video',
