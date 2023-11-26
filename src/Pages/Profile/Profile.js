@@ -42,10 +42,10 @@ const Profile = (props) => {
                             </Box>
                         </Grid>
                         <Grid item xs={12}><Typography variant="body-title-md">
-                            You are officially 🦆-ing Good
+                            You are officially 🦆-ing good
                         </Typography></Grid>
                     </Grid>
-                    <ShareButtons url='https://junction.aronerdelyi.hu/' size='32' title='Random'/>
+                    <ShareButtons url='https://junction.aronerdelyi.hu/' size='32' title="Check it out, I'm officially 🦆-ing good!"/>
                 </Card>
             </Box>
             <Box p={1}>
