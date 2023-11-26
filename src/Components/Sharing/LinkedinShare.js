@@ -7,6 +7,7 @@ function LinkedinShare(props) {
     return (
         <LinkedinShareButton
             url={props.url}
+            title={props.title}
         >
             <LinkedinIcon size={props.size} round />
         </LinkedinShareButton>
